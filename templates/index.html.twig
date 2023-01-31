@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Démarrage
+{% endblock %}
+
+{% block body %}
+
+	<h1>Bienvenue sur l'appli Cash-Control</h1>
+
+	<h3>L'application qui vous permet de suivre vos dépenses pour ne plus vous retrouver à découvert à la fin de chaque mois
+	</h3>
+
+	<h2>Démarrage :</h2>
+
+	<h3>Afin d'utiliser l'application, vous devez tout d'abord créer un compte :</h3>
+
+	<a class="btn btn-primary" href="{{ path('app_register') }}">S'inscrire</a>
+
+	<h3>Sauf si vous en possédez déja un :</h3>
+
+	<a class="btn btn-primary" href="{{ path('app_login') }}">Se connecter</a>
+
+
+{% endblock %}

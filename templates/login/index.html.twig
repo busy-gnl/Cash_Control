@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter
+{% endblock %}
+
+{% block body %}
+	<h1>Se connecter</h1>
+	<main class="container">
+		<form class="d-flex justify-content-center flex-column" action="{{ path('app_login') }}" method="post">
+			<div class="form-group">
+				<label class="pb-2 w-100 form-label" for="username">Adresse e-mail</label>
+				<input class=" form-control border-0" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Entrez votre adresse e-mail">
+			</div>
+			<div class="form-group">
+				<label class="pb-2 w-100 form-label" for="password">Mot de passe</label>
+				<input class=" form-control" type="password" id="password" name="_password" placeholder="Entrez votre adresse mot de passe">
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<input type="hidden" name="_target_path" value="/dashboard">
+			</div>
+			<div class="d-flex justify-content-center">
+				<button type="submit" class="btn btn-success p-3 m-4 mb-3">Se connecter</button>
+			</div>
+		</form>
+
+		<h3>Pas encore inscrit?
+		</h3>
+
+		<a class="btn btn-primary p-3 " href="{{ path('app_register') }}">S'inscrire</a>
+	</main>
+{% endblock %}

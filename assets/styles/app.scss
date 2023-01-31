@@ -1,5 +1,36 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-    background-color: rgb(223, 27, 27);
+    background-color: rgba(92, 89, 89, 0.664);
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 1.5rem;
+}
+
+h1 ,h2 {
+    font-weight: bolder;
+}
+
+.form-label {
+    font-weight: bolder;
+    font-size: 1.5em ;
+    padding: 1rem;
+}
+
+.btn {
+    margin: auto;
+    font-size: 1.3em ;
+    font-weight: bold ;
+}
+
+.form-control {
+    text-align: center;
+    padding: 1em;
+    font-size: 1.3em ;
+}
+
+.form-control:focus {
+    font-weight: bold ;
 }
