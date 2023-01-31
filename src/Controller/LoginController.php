@@ -33,7 +33,7 @@ class LoginController extends AbstractController
     {
         if ($this->isGranted('ROLE_USER')) {
 
-            return $this->redirectToRoute('app_welfare', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_dashboard', [], Response::HTTP_SEE_OTHER);
         }
         return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
     }

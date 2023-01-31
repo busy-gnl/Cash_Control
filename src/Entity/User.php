@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -31,6 +33,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $username = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Earnings::class)]
+    private Collection $earnings;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: MonthlyExpenses::class)]
+    private Collection $monthlyExpenses;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: OccasionalSpendings::class)]
+    private Collection $occasionalSpendings;
+
+    public function __construct()
+    {
+        $this->earnings = new ArrayCollection();
+        $this->monthlyExpenses = new ArrayCollection();
+        $this->occasionalSpendings = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -110,6 +128,96 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Earnings>
+     */
+    public function getEarnings(): Collection
+    {
+        return $this->earnings;
+    }
+
+    public function addEarning(Earnings $earning): self
+    {
+        if (!$this->earnings->contains($earning)) {
+            $this->earnings->add($earning);
+            $earning->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEarning(Earnings $earning): self
+    {
+        if ($this->earnings->removeElement($earning)) {
+            // set the owning side to null (unless already changed)
+            if ($earning->getUser() === $this) {
+                $earning->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MonthlyExpenses>
+     */
+    public function getMonthlyExpenses(): Collection
+    {
+        return $this->monthlyExpenses;
+    }
+
+    public function addMonthlyExpense(MonthlyExpenses $monthlyExpense): self
+    {
+        if (!$this->monthlyExpenses->contains($monthlyExpense)) {
+            $this->monthlyExpenses->add($monthlyExpense);
+            $monthlyExpense->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMonthlyExpense(MonthlyExpenses $monthlyExpense): self
+    {
+        if ($this->monthlyExpenses->removeElement($monthlyExpense)) {
+            // set the owning side to null (unless already changed)
+            if ($monthlyExpense->getUser() === $this) {
+                $monthlyExpense->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OccasionalSpendings>
+     */
+    public function getOccasionalSpendings(): Collection
+    {
+        return $this->occasionalSpendings;
+    }
+
+    public function addOccasionalSpending(OccasionalSpendings $occasionalSpending): self
+    {
+        if (!$this->occasionalSpendings->contains($occasionalSpending)) {
+            $this->occasionalSpendings->add($occasionalSpending);
+            $occasionalSpending->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOccasionalSpending(OccasionalSpendings $occasionalSpending): self
+    {
+        if ($this->occasionalSpendings->removeElement($occasionalSpending)) {
+            // set the owning side to null (unless already changed)
+            if ($occasionalSpending->getUser() === $this) {
+                $occasionalSpending->setUser(null);
+            }
+        }
 
         return $this;
     }

@@ -8,12 +8,12 @@
 <main class="container">
 	{{ form_start(form) }}
 	{{ form_widget(form) }}
-	<button class="btn btn-success p-3 m-4 mb-3">{{ button_label|default('S\'inscire') }}</button>
+	<button class="btn btn-success m-4 mb-3">{{ button_label|default('S\'inscrire') }}</button>
 {{ form_end(form) }}
 
 		<h3>Déja inscrit?
 		</h3>
 
-		<a class="btn btn-primary p-3 " href="{{ path('app_login') }}">Se connecter</a>
+		<a class="btn btn-primary" href="{{ path('app_login') }}">Se connecter</a>
 </main>
 {% endblock %}
