@@ -3,6 +3,14 @@
 		<h4 class="w-100 fs-3">Dashboard</h4>
 	</a>
 	<hr>
+	<div class="fw-semibold fs-5 text-start">
+		Pseudo :
+		{{app.user.username}}
+		<br>
+		E-mail :
+		{{app.user.email}}
+	</div>
+	<hr>
 	<ul class="nav nav-pills flex-column mb-auto fs-5">
 		<li class="nav-item d-flex justify-content-start">
 			<a href="{{ path('app_earnings_index')}}" class="nav-link{% if app.request.pathinfo starts with '/earnings' %} active {% else %} link-dark {% endif %}" aria-current=" page">
@@ -20,7 +28,6 @@
 				<i class="bi bi-cash-coin m-3"></i>Dépenses occasionnelles
 			</a>
 		</li>
-
 	</ul>
 	<hr>
 	<div>
