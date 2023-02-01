@@ -6,6 +6,9 @@ use App\Entity\MonthlyExpenses;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class MonthlyExpensesType extends AbstractType
 {
@@ -37,8 +40,21 @@ class MonthlyExpensesType extends AbstractType
                 'required' => true,
                 'label' => 'Temps de lecture (en minutes) :',
             ])
-            ->add('type')
-            ->add('user');
+            ->add('type', ChoiceType::class, [
+                'required' => true,
+                'label' => 'Temps de lecture (en minutes) :',
+                'choices'  => [
+                    'Maybe' => null,
+                    'Yes' => true,
+                    'No' => false,
+                ],
+                'attr' => [
+                    'class' => 'crud-input',
+                ],
+                'label_attr' => [
+                    'class' => 'crud-label',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
