@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OccasionalSpendings index{% endblock %}
+
+{% block body %}
+    <h1>OccasionalSpendings index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for occasional_spending in occasional_spendings %}
+            <tr>
+                <td>{{ occasional_spending.id }}</td>
+                <td>{{ occasional_spending.name }}</td>
+                <td>{{ occasional_spending.amount }}</td>
+                <td>
+                    <a href="{{ path('app_occasional_spendings_show', {'id': occasional_spending.id}) }}">show</a>
+                    <a href="{{ path('app_occasional_spendings_edit', {'id': occasional_spending.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_occasional_spendings_new') }}">Create new</a>
+{% endblock %}

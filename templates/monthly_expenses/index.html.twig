@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MonthlyExpenses index{% endblock %}
+
+{% block body %}
+    <h1>MonthlyExpenses index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for monthly_expense in monthly_expenses %}
+            <tr>
+                <td>{{ monthly_expense.id }}</td>
+                <td>{{ monthly_expense.name }}</td>
+                <td>{{ monthly_expense.amount }}</td>
+                <td>{{ monthly_expense.type }}</td>
+                <td>
+                    <a href="{{ path('app_monthly_expenses_show', {'id': monthly_expense.id}) }}">show</a>
+                    <a href="{{ path('app_monthly_expenses_edit', {'id': monthly_expense.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_monthly_expenses_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit OccasionalSpendings{% endblock %}
+
+{% block body %}
+    <h1>Edit OccasionalSpendings</h1>
+
+    {{ include('occasional_spendings/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_occasional_spendings_index') }}">back to list</a>
+
+    {{ include('occasional_spendings/_delete_form.html.twig') }}
+{% endblock %}

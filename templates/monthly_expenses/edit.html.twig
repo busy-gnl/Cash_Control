@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit MonthlyExpenses{% endblock %}
+
+{% block body %}
+    <h1>Edit MonthlyExpenses</h1>
+
+    {{ include('monthly_expenses/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_monthly_expenses_index') }}">back to list</a>
+
+    {{ include('monthly_expenses/_delete_form.html.twig') }}
+{% endblock %}

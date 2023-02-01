@@ -1,23 +1,23 @@
 <div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-light">
-	<a href="{{ path('app_admin')}}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+	<a href="{{ path('app_dashboard')}}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
 		<span class="fs-4">Dashboard</span>
 	</a>
 	<hr>
 	<ul class="nav nav-pills flex-column mb-auto">
 		<li class="nav-item">
-			<a href="{{ path('app_admin')}}" class="nav-link {% if app.request.pathinfo starts with '/admin' %} active {% else %} link-dark {% endif %}" aria-current=" page">
+			<a href="{{ path('app_earnings_index')}}" class="nav-link {% if app.request.pathinfo starts with '/earnings' %} active {% else %} link-dark {% endif %}" aria-current=" page">
 				<i class="bi bi-bell-fill m-2"></i>
-				Alertes du jour
+				Revenus
 			</a>
 		</li>
 		<li>
-			<a href="{{ path('app_user_index')}}" class="nav-link {% if app.request.pathinfo starts with '/user/' %} active {% else %} link-dark {% endif %}">
-				<i class="bi bi-people-fill m-2"></i>Patients
+			<a href="{{ path('app_monthly_expenses_index')}}" class="nav-link {% if app.request.pathinfo starts with '/monthly/expenses' %} active {% else %} link-dark {% endif %}">
+				<i class="bi bi-people-fill m-2"></i>Dépenses récurrentes
 			</a>
 		</li>
 		<li>
-			<a href="{{ path('app_secretariat_index')}}" class="nav-link {% if app.request.pathinfo starts with '/secretariat/' %} active {% else %} link-dark {% endif %}">
-				<i class="bi bi-people-fill m-2"></i>Secretariats
+			<a href="{{ path('app_occasional_spendings_index')}}" class="nav-link {% if app.request.pathinfo starts with '/occasional/spendings' %} active {% else %} link-dark {% endif %}">
+				<i class="bi bi-people-fill m-2"></i>Dépenses occasionnelles
 			</a>
 		</li>
 
