@@ -16,28 +16,28 @@ class OccasionalSpendingsType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Ex : Jean-Paul',
+                    'placeholder' => 'Ex : resto en amoureux',
                     'maxlength' => 255,
-                    'class' => 'crud-input',
+                    'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'crud-label',
+                    'class' => 'crud-label form-label',
                 ],
                 'required' => true,
-                'label' => 'Prénom :',
+                'label' => 'Dépense occasionnelle :',
             ])
             ->add('amount', IntegerType::class, [
                 'attr' => [
-                    'placeholder' => 10,
+                    'placeholder' => 60,
                     'min' => 1,
-                    'max' => 60,
-                    'class' => 'crud-input',
+                    'max' => 1000,
+                    'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'crud-label',
+                    'class' => 'crud-label form-label',
                 ],
                 'required' => true,
-                'label' => 'Temps de lecture (en minutes) :',
+                'label' => 'Montant :',
             ]);
     }
 

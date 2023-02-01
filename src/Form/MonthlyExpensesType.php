@@ -17,42 +17,48 @@ class MonthlyExpensesType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Ex : Jean-Paul',
+                    'placeholder' => 'Ex : abonnement netflix',
                     'maxlength' => 255,
-                    'class' => 'crud-input',
+                    'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'crud-label',
+                    'class' => 'crud-label form-label',
                 ],
                 'required' => true,
-                'label' => 'Prénom :',
+                'label' => 'Frais mensuel récurrent :',
             ])
             ->add('amount', IntegerType::class, [
                 'attr' => [
                     'placeholder' => 10,
                     'min' => 1,
-                    'max' => 60,
-                    'class' => 'crud-input',
+                    'max' => 10000,
+                    'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'crud-label',
+                    'class' => 'crud-label form-label',
                 ],
                 'required' => true,
-                'label' => 'Temps de lecture (en minutes) :',
+                'label' => 'Montant :',
             ])
             ->add('type', ChoiceType::class, [
                 'required' => true,
-                'label' => 'Temps de lecture (en minutes) :',
+                'label' => 'Type de frais :',
                 'choices'  => [
-                    'Maybe' => null,
-                    'Yes' => true,
-                    'No' => false,
+                    'Loyer' => 'rent',
+                    'Crédit' => 'loan',
+                    'Alimentation (courses)' => 'grocery_shopping',
+                    'Assurance' => 'insurance',
+                    'Abonnement' => 'subscription',
+                    'Frais de transport' => 'transport',
+                    'Frais de scolarité (enfants)' => 'education',
+                    'Frais bancaire' => 'bank',
+                    'Autre' => 'other',
                 ],
                 'attr' => [
-                    'class' => 'crud-input',
+                    'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'crud-label',
+                    'class' => 'crud-label form-label',
                 ],
             ]);
     }

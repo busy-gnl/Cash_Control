@@ -10,6 +10,7 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 require('bootstrap');
 
 console.log('Hello Webpack Encore !')

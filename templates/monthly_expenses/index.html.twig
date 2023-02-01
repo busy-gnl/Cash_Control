@@ -1,39 +1,40 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}MonthlyExpenses index{% endblock %}
+{% block title %}Frais mensuels récurrents
+{% endblock %}
 
 {% block body %}
-    <h1>MonthlyExpenses index</h1>
+	<main class="container mx-5">
+		<h1>Frais mensuels récurrents</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Type</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for monthly_expense in monthly_expenses %}
-            <tr>
-                <td>{{ monthly_expense.id }}</td>
-                <td>{{ monthly_expense.name }}</td>
-                <td>{{ monthly_expense.amount }}</td>
-                <td>{{ monthly_expense.type }}</td>
-                <td>
-                    <a href="{{ path('app_monthly_expenses_show', {'id': monthly_expense.id}) }}">show</a>
-                    <a href="{{ path('app_monthly_expenses_edit', {'id': monthly_expense.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Libellé</th>
+					<th>Montant</th>
+					<th>Type</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for monthly_expense in monthly_expenses %}
+					<tr>
+						<td>{{ monthly_expense.name }}</td>
+						<td>{{ monthly_expense.amount }}</td>
+						<td>{{ monthly_expense.type }}</td>
+						<td>
+							<a class="btn btn-info" href="{{ path('app_monthly_expenses_show', {'id': monthly_expense.id}) }}">Détails</a>
+							<a class="btn btn-warning" href="{{ path('app_monthly_expenses_edit', {'id': monthly_expense.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Aucune donnée trouvée</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-    <a href="{{ path('app_monthly_expenses_new') }}">Create new</a>
+		<a class="btn btn-primary" href="{{ path('app_monthly_expenses_new') }}">Ajouter un nouveau frais mensuel</a>
+	</main>
 {% endblock %}

@@ -1,13 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}Edit OccasionalSpendings{% endblock %}
+{% block title %}Modifier une dépense occasionnelle
+{% endblock %}
 
 {% block body %}
-    <h1>Edit OccasionalSpendings</h1>
+	<main class="container mx-5">
+		<h1>Modifier une dépense occasionnelle</h1>
+		{{ include('occasional_spendings/_form.html.twig') }}
 
-    {{ include('occasional_spendings/_form.html.twig', {'button_label': 'Update'}) }}
+		<a class="btn btn-dark m-2" href="{{ path('app_occasional_spendings_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_occasional_spendings_index') }}">back to list</a>
-
-    {{ include('occasional_spendings/_delete_form.html.twig') }}
+		{{ include('occasional_spendings/_delete_form.html.twig') }}
+	</main>
 {% endblock %}

@@ -1,39 +1,40 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}Earnings index{% endblock %}
+{% block title %}Revenus mensuels
+{% endblock %}
 
 {% block body %}
-    <h1>Earnings index</h1>
+	<main class="container mx-5">
+		<h1>Revenus mensuels</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Type</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for earning in earnings %}
-            <tr>
-                <td>{{ earning.id }}</td>
-                <td>{{ earning.name }}</td>
-                <td>{{ earning.amount }}</td>
-                <td>{{ earning.type }}</td>
-                <td>
-                    <a href="{{ path('app_earnings_show', {'id': earning.id}) }}">show</a>
-                    <a href="{{ path('app_earnings_edit', {'id': earning.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Libellé</th>
+					<th>Montant</th>
+					<th>Type</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for earning in earnings %}
+					<tr>
+						<td>{{ earning.name }}</td>
+						<td>{{ earning.amount }}</td>
+						<td>{{ earning.type }}</td>
+						<td>
+							<a class="btn btn-info" href="{{ path('app_earnings_show', {'id': earning.id}) }}">Détails</a>
+							<a class="btn btn-warning" href="{{ path('app_earnings_edit', {'id': earning.id}) }}">Modifiere</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Aucune donnée trouvée</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-    <a href="{{ path('app_earnings_new') }}">Create new</a>
+		<a class="btn btn-primary" href="{{ path('app_earnings_new') }}">Ajouter un nouveau revenu mensuel</a>
+	</main>
 {% endblock %}

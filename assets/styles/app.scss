@@ -5,13 +5,17 @@ body {
     text-align: center;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2 {
     margin: 1.5rem;
-}
-
-h1 ,h2 {
     font-weight: bolder;
 }
+
+h3, h4, h5 {
+    margin: 1rem;
+    font-weight: bolder;
+}
+
+
 
 .form-label {
     font-weight: bolder;
@@ -29,6 +33,7 @@ h1 ,h2 {
 .form-control {
     text-align: center;
     font-size: 1.5em ;
+    font-weight: normal ;
     padding: 1rem;
 }
 
@@ -38,4 +43,24 @@ h1 ,h2 {
 
 .sidebar {
     width: fit-content;
+}
+
+.crud-label {
+    font-weight: bold;
+    margin: 1em;
+}
+
+.crud-input {
+    margin-bottom: 1em;
+}
+
+.crud-input:focus {
+    font-weight: bold;
+}
+
+.crud-button {
+    font-weight: bold;
+
+    display: block;
+    margin: auto;
 }

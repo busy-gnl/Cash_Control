@@ -1,11 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}New MonthlyExpenses{% endblock %}
+{% block title %}Ajouter un frais mensuel récurrent
+{% endblock %}
 
 {% block body %}
-    <h1>Create new MonthlyExpenses</h1>
+	<main class="container mx-5">
+		<h1>Ajouter un frais mensuel récurrent</h1>
+		{{ include('monthly_expenses/_form.html.twig') }}
 
-    {{ include('monthly_expenses/_form.html.twig') }}
-
-    <a href="{{ path('app_monthly_expenses_index') }}">back to list</a>
+		<a class="btn btn-dark m-2" href="{{ path('app_monthly_expenses_index') }}">Retour à la liste</a>
+	</main>
 {% endblock %}

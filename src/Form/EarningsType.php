@@ -17,42 +17,47 @@ class EarningsType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Ex : Jean-Paul',
+                    'placeholder' => 'Ex : salaire',
                     'maxlength' => 255,
-                    'class' => 'crud-input',
+                    'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'crud-label',
+                    'class' => 'crud-label form-label',
                 ],
                 'required' => true,
-                'label' => 'Prénom :',
+                'label' => 'Libellé du revenu :',
+                'help' => "Le libellé est juste à titre indicatif afin que </br>
+                vous puissiez rapidement identifier facilement à quoi il correspond.",
+                'help_html' => true
             ])
             ->add('amount', IntegerType::class, [
                 'attr' => [
-                    'placeholder' => 10,
+                    'placeholder' => 1353,
                     'min' => 1,
-                    'max' => 60,
-                    'class' => 'crud-input',
+                    'max' => 100000,
+                    'class' => 'crud-input form-co du revenuntrol',
                 ],
                 'label_attr' => [
-                    'class' => 'crud-label',
+                    'class' => 'crud-label form-label',
                 ],
                 'required' => true,
-                'label' => 'Temps de lecture (en minutes) :',
+                'label' => 'Montant :',
             ])
             ->add('type', ChoiceType::class, [
                 'required' => true,
-                'label' => 'Temps de lecture (en minutes) :',
+                'label' => 'Type du revenu :',
                 'choices'  => [
-                    'Maybe' => null,
-                    'Yes' => true,
-                    'No' => false,
+                    'Salaire' => 'salary',
+                    'Prestation sociale (retraite, chômage, invalidité)' => 'allowance',
+                    'Rente immobilière' => "property_rent",
+                    'Investissement divers' => "investment",
+                    'Pension alimentaire' => "child_support",
                 ],
                 'attr' => [
-                    'class' => 'crud-input',
+                    'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'crud-label',
+                    'class' => 'crud-label form-label',
                 ],
             ]);
     }

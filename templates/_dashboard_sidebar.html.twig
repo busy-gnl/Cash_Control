@@ -1,30 +1,30 @@
 <div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-light">
-	<a href="{{ path('app_dashboard')}}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-		<span class="fs-4">Dashboard</span>
+	<a href="{{ path('app_dashboard')}}" class="d-flex text-center w-100 link-dark text-decoration-none">
+		<h4 class="w-100 fs-3">Dashboard</h4>
 	</a>
 	<hr>
-	<ul class="nav nav-pills flex-column mb-auto">
-		<li class="nav-item">
-			<a href="{{ path('app_earnings_index')}}" class="nav-link {% if app.request.pathinfo starts with '/earnings' %} active {% else %} link-dark {% endif %}" aria-current=" page">
-				<i class="bi bi-bell-fill m-2"></i>
+	<ul class="nav nav-pills flex-column mb-auto fs-5">
+		<li class="nav-item d-flex justify-content-start">
+			<a href="{{ path('app_earnings_index')}}" class="nav-link{% if app.request.pathinfo starts with '/earnings' %} active {% else %} link-dark {% endif %}" aria-current=" page">
+				<i class="bi bi-piggy-bank m-3"></i>
 				Revenus
 			</a>
 		</li>
-		<li>
+		<li class="nav-item d-flex justify-content-start">
 			<a href="{{ path('app_monthly_expenses_index')}}" class="nav-link {% if app.request.pathinfo starts with '/monthly/expenses' %} active {% else %} link-dark {% endif %}">
-				<i class="bi bi-people-fill m-2"></i>Dépenses récurrentes
+				<i class="bi bi-cash-stack m-3"></i>Dépenses récurrentes
 			</a>
 		</li>
-		<li>
+		<li class="nav-item d-flex justify-content-start">
 			<a href="{{ path('app_occasional_spendings_index')}}" class="nav-link {% if app.request.pathinfo starts with '/occasional/spendings' %} active {% else %} link-dark {% endif %}">
-				<i class="bi bi-people-fill m-2"></i>Dépenses occasionnelles
+				<i class="bi bi-cash-coin m-3"></i>Dépenses occasionnelles
 			</a>
 		</li>
 
 	</ul>
 	<hr>
 	<div>
-		<a href="{{ path("app_logout") }}" class="d-flex align-items-center link-dark text-decoration-none justify-content-between" id="dropdownUser2">
+		<a href="{{ path("app_logout") }}" class="d-flex align-items-center link-dark text-decoration-none justify-content-between fs-4" id="dropdownUser2">
 			<img src="{{asset('build/images/exit.svg')}}">
 			<strong>Déconnexion</strong>
 		</a>
