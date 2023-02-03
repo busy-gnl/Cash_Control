@@ -16,20 +16,22 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for occasional_spending in occasional_spendings %}
-					<tr>
-						<td>{{ occasional_spending.name }}</td>
-						<td>{{ occasional_spending.amount }}</td>
-						<td>
-							<a class="btn btn-info" href="{{ path('app_occasional_spendings_show', {'id': occasional_spending.id}) }}">Détails</a>
-							<a class="btn btn-warning" href="{{ path('app_occasional_spendings_edit', {'id': occasional_spending.id}) }}">Modifier</a>
-						</td>
-					</tr>
-				{% else %}
-					<tr>
-						<td colspan="4">Aucune donnée trouvée</td>
-					</tr>
-				{% endfor %}
+				{% if app.user %}
+					{% for occasional_spending in app.user.occasionalSpendings %}
+						<tr>
+							<td>{{ occasional_spending.name|capitalize }}</td>
+							<td>{{ occasional_spending.amount }}</td>
+							<td>
+								<a class="btn btn-warning" href="{{ path('app_occasional_spendings_edit', {'id': occasional_spending.id}) }}">Modifier</a>
+								{% include "occasional_spendings/_delete_form.html.twig" %}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="4">Aucune donnée trouvée</td>
+						</tr>
+					{% endfor %}
+				{% endif %}
 			</tbody>
 		</table>
 

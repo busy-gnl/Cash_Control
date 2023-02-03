@@ -15,17 +15,26 @@ class MonthlyExpensesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
+            ->add('type', ChoiceType::class, [
+                'required' => true,
+                'label' => 'Type de frais :',
+                'choices'  => [
+                    'Loyer' => 'Loyer',
+                    'Crédit' => 'Crédit',
+                    'Alimentation (courses)' => 'Alimentation (courses)',
+                    'Assurance' => 'Assurance',
+                    'Abonnement' => 'Abonnement',
+                    'Frais de transport' => 'Frais de transport',
+                    'Frais de scolarité (enfants)' => 'Frais de scolarité (enfants)',
+                    'Frais bancaire' => 'Frais bancaire',
+                    'Autre' => 'Autre',
+                ],
                 'attr' => [
-                    'placeholder' => 'Ex : abonnement netflix',
-                    'maxlength' => 255,
                     'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [
                     'class' => 'crud-label form-label',
                 ],
-                'required' => true,
-                'label' => 'Frais mensuel récurrent :',
             ])
             ->add('amount', IntegerType::class, [
                 'attr' => [
@@ -40,26 +49,20 @@ class MonthlyExpensesType extends AbstractType
                 'required' => true,
                 'label' => 'Montant :',
             ])
-            ->add('type', ChoiceType::class, [
-                'required' => true,
-                'label' => 'Type de frais :',
-                'choices'  => [
-                    'Loyer' => 'rent',
-                    'Crédit' => 'loan',
-                    'Alimentation (courses)' => 'grocery_shopping',
-                    'Assurance' => 'insurance',
-                    'Abonnement' => 'subscription',
-                    'Frais de transport' => 'transport',
-                    'Frais de scolarité (enfants)' => 'education',
-                    'Frais bancaire' => 'bank',
-                    'Autre' => 'other',
-                ],
+            ->add('name', TextType::class, [
                 'attr' => [
+                    'placeholder' => 'Ex : abonnement netflix',
+                    'maxlength' => 255,
                     'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [
                     'class' => 'crud-label form-label',
                 ],
+                'required' => true,
+                'label' => 'Libellé du frais :',
+                'help' => "Le libellé est à titre indicatif afin que </br>
+                vous puissiez identifier facilement ce à quoi il correspond.",
+                'help_html' => true,
             ]);
     }
 

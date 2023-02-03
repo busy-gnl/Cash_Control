@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\Earnings;
 use App\Form\EarningsType;
 use App\Repository\EarningsRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/earnings')]
 class EarningsController extends AbstractController
 {
@@ -24,11 +26,14 @@ class EarningsController extends AbstractController
     #[Route('/new', name: 'app_earnings_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EarningsRepository $earningsRepository): Response
     {
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
         $earning = new Earnings();
         $form = $this->createForm(EarningsType::class, $earning);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $earning->setUser($user);
             $earningsRepository->save($earning, true);
 
             return $this->redirectToRoute('app_earnings_index', [], Response::HTTP_SEE_OTHER);
@@ -69,7 +74,7 @@ class EarningsController extends AbstractController
     #[Route('/{id}', name: 'app_earnings_delete', methods: ['POST'])]
     public function delete(Request $request, Earnings $earning, EarningsRepository $earningsRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$earning->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $earning->getId(), $request->request->get('_token'))) {
             $earningsRepository->remove($earning, true);
         }
 

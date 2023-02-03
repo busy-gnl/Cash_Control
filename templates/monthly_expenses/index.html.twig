@@ -5,7 +5,7 @@
 
 {% block body %}
 	<main class="container mx-5">
-		<h1>Frais mensuels récurrents</h1>
+		<h1>Frais de la vie quotiennes</h1>
 
 		<table class="table">
 			<thead>
@@ -17,21 +17,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for monthly_expense in monthly_expenses %}
-					<tr>
-						<td>{{ monthly_expense.name }}</td>
-						<td>{{ monthly_expense.amount }}</td>
-						<td>{{ monthly_expense.type }}</td>
-						<td>
-							<a class="btn btn-info" href="{{ path('app_monthly_expenses_show', {'id': monthly_expense.id}) }}">Détails</a>
-							<a class="btn btn-warning" href="{{ path('app_monthly_expenses_edit', {'id': monthly_expense.id}) }}">Modifier</a>
-						</td>
-					</tr>
-				{% else %}
-					<tr>
-						<td colspan="5">Aucune donnée trouvée</td>
-					</tr>
-				{% endfor %}
+				{% if app.user %}
+					{% for monthly_expense in app.user.monthlyExpenses %}
+						<tr>
+							<td>{{ monthly_expense.name|capitalize }}</td>
+							<td>{{ monthly_expense.amount }}</td>
+							<td>{{ monthly_expense.type }}</td>
+							<td>
+								<a class="btn btn-warning" href="{{ path('app_monthly_expenses_edit', {'id': monthly_expense.id}) }}">Modifier</a>
+								{% include "monthly_expenses/_delete_form.html.twig" %}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="5">Aucune donnée trouvée</td>
+						</tr>
+					{% endfor %}
+				{% endif %}
 			</tbody>
 		</table>
 

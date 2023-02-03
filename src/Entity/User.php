@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Earnings;
+use App\Entity\MonthlyExpenses;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+use App\Entity\OccasionalSpendings;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -42,6 +45,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: OccasionalSpendings::class)]
     private Collection $occasionalSpendings;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $firstLogin = null;
 
     public function __construct()
     {
@@ -218,6 +224,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $occasionalSpending->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isFirstLogin(): ?bool
+    {
+        return $this->firstLogin;
+    }
+
+    public function setFirstLogin(?bool $firstLogin): self
+    {
+        $this->firstLogin = $firstLogin;
 
         return $this;
     }

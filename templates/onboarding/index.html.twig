@@ -1,20 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OnboardingController!{% endblock %}
+{% block title %}Onboarding
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<main class="container">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		<h1>Bienvenue
+			{{app.user.username}}</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/busy-gnl/Documents/Wild Code School/CHECKPOINTS/CHECKPOINT 4/cash-control/src/Controller/OnboardingController.php'|file_link(0) }}">src/Controller/OnboardingController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/busy-gnl/Documents/Wild Code School/CHECKPOINTS/CHECKPOINT 4/cash-control/templates/onboarding/index.html.twig'|file_link(0) }}">templates/onboarding/index.html.twig</a></code></li>
-    </ul>
-</div>
+		<section class="section-onboarding">
+			<h2>Ajouter vos revenus mensuels réguliers</h2>
+			{{ form_start(earningsform) }}
+			{{ form_widget(earningsform) }}
+			<button class="btn btn-success crud-button ">{{ button_label|default('Ajouter une source de revenu') }}</button>
+			{{ form_end(earningsform) }}
+		</section>
+
+		<section class="section-onboarding">
+			<h4>
+				Astuce : Vous pouvez ajouter plusieurs sources de revenus les unes après les autres.
+				<br>
+				Vous pourrez toujours en ajouter, modifier et supprimer depuis votre Tableau de bord.
+			</h4>
+		</section>
+
+		<section class="section-onboarding">
+			<h2 id="spendings">Ajoutez vos dépenses mensuelles régulières</h2>
+			{{ form_start(expensesform) }}
+			{{ form_widget(expensesform) }}
+			<button href="#spendings" class="btn btn-danger crud-button ">{{ button_label|default('Ajouter un frais mensuel') }}</button>
+			{{ form_end(expensesform) }}
+		</section>
+
+		<section class="section-onboarding">
+			<h4>
+				Astuce : Vous pouvez ajouter plusieurs dépenses mensuelles après les autres.
+				<br>
+				Vous pourrez toujours en ajouter, modifier et supprimer depuis votre Tableau de bord.
+			</h4>
+		</section>
+
+		<section class="section-onboarding">
+			<h4>
+				Quand vous aurez terminé de remplir ce questionnaire, cliquez sur le bouton "Terminer" ci-dessous pour accéder à votre Tableau de bord.
+			</h4>
+			<a href="{{ path('app_dashboard')}}" class="btn btn-dark">Terminer</a>
+		</section>
+	</main>
+
 {% endblock %}

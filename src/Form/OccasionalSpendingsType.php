@@ -25,6 +25,9 @@ class OccasionalSpendingsType extends AbstractType
                 ],
                 'required' => true,
                 'label' => 'Dépense occasionnelle :',
+                'help' => "Le nom est à titre indicatif afin que </br>
+                vous puissiez identifier facilement ce à quoi il correspond.",
+                'help_html' => true,
             ])
             ->add('amount', IntegerType::class, [
                 'attr' => [

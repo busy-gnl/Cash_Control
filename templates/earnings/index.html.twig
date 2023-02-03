@@ -17,21 +17,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for earning in earnings %}
-					<tr>
-						<td>{{ earning.name }}</td>
-						<td>{{ earning.amount }}</td>
-						<td>{{ earning.type }}</td>
-						<td>
-							<a class="btn btn-info" href="{{ path('app_earnings_show', {'id': earning.id}) }}">Détails</a>
-							<a class="btn btn-warning" href="{{ path('app_earnings_edit', {'id': earning.id}) }}">Modifiere</a>
-						</td>
-					</tr>
-				{% else %}
-					<tr>
-						<td colspan="5">Aucune donnée trouvée</td>
-					</tr>
-				{% endfor %}
+				{% if app.user %}
+					{% for earning in app.user.earnings %}
+						<tr>
+							<td>{{ earning.name|capitalize }}</td>
+							<td>{{ earning.amount }}</td>
+							<td>{{ earning.type}}</td>
+							<td>
+								<a class="btn btn-warning" href="{{ path('app_earnings_edit', {'id': earning.id}) }}">Modifier</a>
+								{% include "earnings/_delete_form.html.twig" %}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="5">Aucune donnée trouvée</td>
+						</tr>
+					{% endfor %}
+				{% endif %}
 			</tbody>
 		</table>
 

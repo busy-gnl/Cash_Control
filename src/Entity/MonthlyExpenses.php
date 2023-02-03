@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\MonthlyExpensesRepository;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MonthlyExpensesRepository;
 
 #[ORM\Entity(repositoryClass: MonthlyExpensesRepository::class)]
 class MonthlyExpenses

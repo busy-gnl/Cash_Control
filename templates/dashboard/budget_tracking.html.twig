@@ -1,0 +1,47 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% set totalEarnings = 0 %}
+{% for earning in app.user.earnings %}
+	{% set totalEarnings = totalEarnings + earning.amount %}
+{% endfor %}
+
+{% set totalMonthlyExpenses = 0 %}
+{% for expense in app.user.monthlyExpenses %}
+	{% set totalMonthlyExpenses = totalMonthlyExpenses + expense.amount %}
+{% endfor %}
+
+{% set availableBudget = totalEarnings - totalMonthlyExpenses %}
+
+{% set advicedSavings = (totalEarnings / 100) * 10 %}
+
+{% set weeklyBudget = availableBudget / 4.5 %}
+
+{% set daysInMonth = "now"|date("t") %}
+
+{% set dailyBudget = availableBudget / daysInMonth %}
+
+{% block title %}Suivre mon budget
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1>
+			{{app.user.username}}</h1>
+
+		<section class="section-onboarding">
+			<h4>Après avoir payé toute vos factures, il vous resteras donc :
+			</h4>
+			<h4>{{availableBudget}}
+				€ pour finir le mois.
+			</h4>
+			<h4>Ce qui représente
+				{{weeklyBudget|round }}
+				€ par semaine.
+			</h4>
+			<h4>Veuillez donc à ne pas dépenser plus que
+				{{dailyBudget|round}}
+				€ en moyenne par jour.
+			</h4>
+		</section>
+	</main>
+{% endblock %}

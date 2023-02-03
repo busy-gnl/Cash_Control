@@ -6,35 +6,33 @@ body {
 }
 
 h1, h2 {
-    margin: 1.5rem;
+    margin: 1.3rem;
     font-weight: bolder;
 }
 
 h3, h4, h5 {
-    margin: 1rem;
+    margin: 1.3rem;
     font-weight: bolder;
-}
-
-
-
-.form-label {
-    font-weight: bolder;
-    font-size: 1.5em ;
-    padding: 1rem;
 }
 
 .btn {
     margin: auto;
     font-size: 1.3em ;
     font-weight: bold ;
-    padding: 1rem;
+    padding: 0.7rem;
 }
 
-.form-control {
-    text-align: center;
-    font-size: 1.5em ;
-    font-weight: normal ;
+.form-label {
+    font-weight: bolder;
+    font-size: 1.5rem ;
     padding: 1rem;
+} 
+
+.form-control{
+    text-align: center;
+    font-size: 1.5rem ;
+    font-weight: normal ;
+    padding: 0.5rem;
 }
 
 .form-control:focus {
@@ -47,11 +45,11 @@ h3, h4, h5 {
 
 .crud-label {
     font-weight: bold;
-    margin: 1em;
+    margin: auto;
 }
 
 .crud-input {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 .crud-input:focus {
@@ -60,7 +58,17 @@ h3, h4, h5 {
 
 .crud-button {
     font-weight: bold;
-
+    margin: 1rem;
     display: block;
     margin: auto;
+}
+
+.help-text {
+font-size: 1.2rem;
+font-weight:500;
+margin: 1rem;
+}
+
+.section-onboarding {
+    margin-bottom: 5rem;
 }

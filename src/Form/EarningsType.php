@@ -15,6 +15,38 @@ class EarningsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('type', ChoiceType::class, [
+                'required' => true,
+                'label' => 'Type du revenu :',
+                'choices'  => [
+                    'Salaire' => 'Salaire',
+                    'Prestation sociale (retraite, chômage, invalidité)' => 'Prestation sociale',
+                    'Aide sociale (CAF, prime d\'activité, etc..)' => 'Aide sociale',
+                    'Rente immobilière' => "Rente immobilière",
+                    'Investissement' => "Investissement",
+                    'Pension alimentaire' => "Pension alimentaire",
+                    'Autre' => 'Autre',
+                ],
+                'attr' => [
+                    'class' => 'crud-input form-control',
+                ],
+                'label_attr' => [
+                    'class' => 'crud-label form-label',
+                ],
+            ])
+            ->add('amount', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 1353,
+                    'min' => 1,
+                    'max' => 100000,
+                    'class' => 'crud-input form-control',
+                ],
+                'label_attr' => [
+                    'class' => 'crud-label form-label',
+                ],
+                'required' => true,
+                'label' => 'Montant :',
+            ])
             ->add('name', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Ex : salaire',
@@ -26,39 +58,9 @@ class EarningsType extends AbstractType
                 ],
                 'required' => true,
                 'label' => 'Libellé du revenu :',
-                'help' => "Le libellé est juste à titre indicatif afin que </br>
-                vous puissiez rapidement identifier facilement à quoi il correspond.",
-                'help_html' => true
-            ])
-            ->add('amount', IntegerType::class, [
-                'attr' => [
-                    'placeholder' => 1353,
-                    'min' => 1,
-                    'max' => 100000,
-                    'class' => 'crud-input form-co du revenuntrol',
-                ],
-                'label_attr' => [
-                    'class' => 'crud-label form-label',
-                ],
-                'required' => true,
-                'label' => 'Montant :',
-            ])
-            ->add('type', ChoiceType::class, [
-                'required' => true,
-                'label' => 'Type du revenu :',
-                'choices'  => [
-                    'Salaire' => 'salary',
-                    'Prestation sociale (retraite, chômage, invalidité)' => 'allowance',
-                    'Rente immobilière' => "property_rent",
-                    'Investissement divers' => "investment",
-                    'Pension alimentaire' => "child_support",
-                ],
-                'attr' => [
-                    'class' => 'crud-input form-control',
-                ],
-                'label_attr' => [
-                    'class' => 'crud-label form-label',
-                ],
+                'help' => "Le libellé est à titre indicatif afin que </br>
+                vous puissiez identifier facilement ce à quoi il correspond.",
+                'help_html' => true,
             ]);
     }
 
