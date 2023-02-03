@@ -29,18 +29,28 @@
 			{{app.user.username}}</h1>
 
 		<section class="section-onboarding">
-			<h4>Après avoir payé toute vos factures, il vous resteras donc :
+			<h4>Après avoir payé toute vos factures, il vous restera donc environ :
 			</h4>
-			<h4>{{availableBudget}}
-				€ pour finir le mois.
+			<h4>
+				<span class="calculated-amount">
+					{{availableBudget}}
+					€
+				</spanclass="calculated-amount">
+				pour finir le mois.
 			</h4>
 			<h4>Ce qui représente
-				{{weeklyBudget|round }}
-				€ par semaine.
+				<span class="calculated-amount">
+					{{weeklyBudget|round }}
+					€
+				</spanclass="calculated-amount">
+				par semaine.
 			</h4>
 			<h4>Veuillez donc à ne pas dépenser plus que
-				{{dailyBudget|round}}
-				€ en moyenne par jour.
+				<span class="calculated-amount">
+					{{dailyBudget|round}}
+					€
+				</spanclass="calculated-amount">
+				en moyenne par jour.
 			</h4>
 		</section>
 	</main>

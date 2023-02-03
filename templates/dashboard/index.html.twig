@@ -26,27 +26,52 @@
 			<h4>D'après les informations que vous nous avez communiquées :
 			</h4>
 			<h4>Vos revenus totaux mensuels s'élèvent à environ
-				{{totalEarnings}}
-				€.
+				<span class="calculated-revenu">
+					{{totalEarnings}}
+					€
+				</span>.
 			</h4>
 			<h4>Vos frais de la vie quotienne s'élèvent à environ
-				{{totalMonthlyExpenses}}
-				€ par mois.
+				<span class="calculated-amount">
+					{{totalMonthlyExpenses}}
+					€
+				</span>
+				par mois.
 			</h4>
 			<h4>Cela signifie qu'il vous reste chaque mois environ
-				{{availableBudget}}
-				€ pour vos loisirs et activités diverses.
+				<span class="calculated-amount">
+					{{availableBudget}}
+					€
+				</span>
+				pour vos loisirs et activités diverses.
 			</h4>
+
+			<a href="{{ path('app_budget_tracking')}}" class="btn btn-light">
+				Suivre mon budget en détails
+			</a>
+
 		</section>
 		<section class="section-onboarding">
 			<h4>Néanmoins, les spécialistes des finances personnelles préconisent de mettre une partie de vos revenus de côté en cas de coup dur ou tout simplement pour investir dans l'optique de préparer sa retraite ou de réaliser les projets qui vous tiennent a coeur.
 			</h4>
-			<h4>Si votre situation financière vous le permet, il est conseillé d'épargner 10% de vos revenus chaque mois. Soit
-				{{advicedSavings}}
-				€ dans votre situation.
+			<h4>Si votre situation financière vous le permet, il est conseillé d'épargner 10% de vos revenus chaque mois.
+				<br>
+				Soit
+				<span class="calculated-amount">
+					{{advicedSavings}}
+					€
+				</span>
+				dans votre situation.
 			</h4>
-			<h4>Si ce n'est pas possible pour vous, essayez de limiter les dépenses impulsives et inutiles. Essayez d'épargner au minimum 50 à 100 € chaque mois.
+			<h4>Si ce n'est pas possible pour vous, essayez de limiter les dépenses impulsives et inutiles.
+				<br>Essayez d'épargner au minimum
+				<span class="calculated-amount">50 à 100 €</span>
+				chaque mois.
 			</h4>
+
+			<a href="{{ path('app_savings_index')}}" class="btn btn-info">
+				Plus de conseils sur l'épargne
+			</a>
 		</section>
 	</main>
 {% endblock %}

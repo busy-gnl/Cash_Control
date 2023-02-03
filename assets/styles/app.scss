@@ -1,8 +1,23 @@
 @import "~bootstrap/scss/bootstrap";
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;400&display=swap');
+//to use it :     font-family: 'Noto Sans Mono', monospace;
+
+// @impo wrt url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;400&family=Oswald:wght@500&display=swap');
+//to use it : 
+// @font-face {
+//     font-family: "Libre_Baskerville";
+//     src: url("../fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf") format("truetype");
+// }
+@font-face {
+    font-family: "Oswald";
+    src: url("../fonts/Oswald/Oswald-VariableFont_wght.ttf") format("truetype");
+    }
+
 
 body {
-    background-color: rgba(92, 89, 89, 0.664);
+    background: linear-gradient(to bottom, #7dffb0, #7dc8ff);
     text-align: center;
+    font-family: 'Oswald';
 }
 
 h1, h2 {
@@ -12,8 +27,14 @@ h1, h2 {
 
 h3, h4, h5 {
     margin: 1.3rem;
-    font-weight: bolder;
+    font-weight: 500;
 }
+
+//Navbar ------------------
+
+//End Navbar --------------
+
+//CRUD Forms --------------
 
 .btn {
     margin: auto;
@@ -28,7 +49,7 @@ h3, h4, h5 {
     padding: 1rem;
 } 
 
-.form-control{
+.form-control{ 
     text-align: center;
     font-size: 1.5rem ;
     font-weight: normal ;
@@ -69,6 +90,26 @@ font-weight:500;
 margin: 1rem;
 }
 
+//End CRUD Forms ---------
+
+//Onboarding ------------
+
 .section-onboarding {
     margin-bottom: 5rem;
 }
+
+//End Onboaring --------
+
+// Dashboard -----------
+
+.calculated-amount {
+    color: darkred;
+    font-weight: 800;
+}
+
+.calculated-revenu {
+    color: darkgreen;
+    font-weight: 800;
+}
+
+//End Dashboard

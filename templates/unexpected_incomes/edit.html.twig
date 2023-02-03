@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit UnexpectedIncomes{% endblock %}
+
+{% block body %}
+    <h1>Edit UnexpectedIncomes</h1>
+
+    {{ include('unexpected_incomes/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_unexpected_incomes_index') }}">back to list</a>
+
+    {{ include('unexpected_incomes/_delete_form.html.twig') }}
+{% endblock %}
