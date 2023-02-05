@@ -10,7 +10,7 @@
 	{% set totalMonthlyExpenses = totalMonthlyExpenses + expense.amount %}
 {% endfor %}
 
-{% set availableBudget = totalEarnings - totalMonthlyExpenses %}
+{% set monthlyBudget = totalEarnings - totalMonthlyExpenses %}
 
 {% set advicedSavings = (totalEarnings / 100) * 10 %}
 
@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container">
+	<section class="container">
 		<h1>Bonjour
 			{{app.user.username}}</h1>
 
@@ -40,7 +40,7 @@
 			</h4>
 			<h4>Cela signifie qu'il vous reste chaque mois environ
 				<span class="calculated-amount">
-					{{availableBudget}}
+					{{monthlyBudget}}
 					€
 				</span>
 				pour vos loisirs et activités diverses.
@@ -73,5 +73,5 @@
 				Plus de conseils sur l'épargne
 			</a>
 		</section>
-	</main>
+	</section>
 {% endblock %}

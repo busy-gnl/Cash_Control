@@ -13,3 +13,18 @@ import './bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 require('bootstrap');
 
+const sidebar = document.querySelector('.sidebar');
+const navbar = document.querySelector('.navbar');
+const handleMediaQuery = function() {
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    sidebar.classList.add("d-none");
+    navbar.classList.remove("d-none");
+  } else {
+    sidebar.classList.remove("d-none");
+    navbar.classList.add("d-none");
+  }
+};
+
+handleMediaQuery();
+
+window.addEventListener('resize', handleMediaQuery);

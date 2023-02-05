@@ -33,7 +33,7 @@ class OccasionalSpendingsType extends AbstractType
                 'attr' => [
                     'placeholder' => 60,
                     'min' => 1,
-                    'max' => 1000,
+                    'max' => 5000,
                     'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [

@@ -12,12 +12,17 @@
     font-family: "Oswald";
     src: url("../fonts/Oswald/Oswald-VariableFont_wght.ttf") format("truetype");
     }
-
+html {
+    height: 100%;
+    margin: 0;
+}
 
 body {
-    background: linear-gradient(to bottom, #7dffb0, #7dc8ff);
+    background: linear-gradient(to bottom, #ffffff, #75c7dc);
     text-align: center;
     font-family: 'Oswald';
+    height: 100%;
+    margin: 0;
 }
 
 h1, h2 {
@@ -30,14 +35,33 @@ h3, h4, h5 {
     font-weight: 500;
 }
 
-//Navbar ------------------
+.img-cash{
+    max-width: 80vw;
+}
 
+.table {
+    font-size: large;
+    font-weight: bold;
+}
+
+//Navbar ------------------
+    .sidebar {
+        width: fit-content;
+    }
+    
+
+    @media only screen and (max-width: 720px) {
+
+    .sidebar {
+        display: none;
+    }
+  }
 //End Navbar --------------
 
 //CRUD Forms --------------
 
 .btn {
-    margin: auto;
+    margin: 0.5rem;
     font-size: 1.3em ;
     font-weight: bold ;
     padding: 0.7rem;
@@ -60,9 +84,6 @@ h3, h4, h5 {
     font-weight: bold ;
 }
 
-.sidebar {
-    width: fit-content;
-}
 
 .crud-label {
     font-weight: bold;
@@ -113,3 +134,9 @@ margin: 1rem;
 }
 
 //End Dashboard
+
+//Navbar Top
+
+
+
+//End Navbar

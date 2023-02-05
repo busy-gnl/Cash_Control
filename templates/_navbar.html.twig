@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="{{ path('app_dashboard')}}">Dashboard</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{ path('app_budget_tracking')}}">
+						<i class="bi bi-bank m-2"></i>Mon budget</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_earnings_index')}}">
+						<i class="bi bi-wallet2 m-2"></i>Revenus</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_monthly_expenses_index')}}">
+						<i class="bi bi-cash-stack m-2"></i>Frais mensuels fixes</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="bi bi-three-dots m-2"></i>
+						Plus d'options
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="{{ path('app_occasional_spendings_index')}}">
+								<i class="bi bi-cash-coin m-3"></i>Dépenses de loisirs</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('app_savings_index')}}">
+								<i class="bi bi-piggy-bank m-3"></i>
+								Épargner</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('app_unexpected_incomes_index')}}">
+								<i class="bi bi-coin m-3"></i>
+								Entrées d'argent inattendues</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a href="{{ path("app_logout") }}" class="link-dark text-decoration-none">
+						<img class="m-2" src="{{asset('build/images/exit.svg')}}">
+						Déconnexion
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

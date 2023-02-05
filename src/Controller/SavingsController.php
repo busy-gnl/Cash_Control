@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\Savings;
 use App\Form\SavingsType;
 use App\Repository\SavingsRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/savings')]
 class SavingsController extends AbstractController
 {
@@ -69,7 +71,7 @@ class SavingsController extends AbstractController
     #[Route('/{id}', name: 'app_savings_delete', methods: ['POST'])]
     public function delete(Request $request, Savings $saving, SavingsRepository $savingsRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$saving->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $saving->getId(), $request->request->get('_token'))) {
             $savingsRepository->remove($saving, true);
         }
 

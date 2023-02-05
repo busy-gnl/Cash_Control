@@ -1,30 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}UnexpectedIncomes{% endblock %}
+{% block title %}UnexpectedIncomes
+{% endblock %}
 
 {% block body %}
-    <h1>UnexpectedIncomes</h1>
+	<main class="container mx-5">
+		<h1>UnexpectedIncomes</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ unexpected_income.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ unexpected_income.name }}</td>
-            </tr>
-            <tr>
-                <th>Amount</th>
-                <td>{{ unexpected_income.amount }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ unexpected_income.id }}</td>
+				</tr>
+				<tr>
+					<th>Name</th>
+					<td>{{ unexpected_income.name }}</td>
+				</tr>
+				<tr>
+					<th>Amount</th>
+					<td>{{ unexpected_income.amount }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <a href="{{ path('app_unexpected_incomes_index') }}">back to list</a>
+		<a href="{{ path('app_unexpected_incomes_index') }}">back to list</a>
 
-    <a href="{{ path('app_unexpected_incomes_edit', {'id': unexpected_income.id}) }}">edit</a>
+		<a href="{{ path('app_unexpected_incomes_edit', {'id': unexpected_income.id}) }}">edit</a>
 
-    {{ include('unexpected_incomes/_delete_form.html.twig') }}
+		{{ include('unexpected_incomes/_delete_form.html.twig') }}
+	</main>
 {% endblock %}

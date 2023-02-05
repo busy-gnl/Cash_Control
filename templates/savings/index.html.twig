@@ -1,41 +1,44 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}Savings index{% endblock %}
+{% block title %}Placements et investissements
+{% endblock %}
 
 {% block body %}
-    <h1>Savings index</h1>
+	<main class="container mx-5">
+		<h1>Placements et investissements</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Type</th>
-                <th>Profitability</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for saving in savings %}
-            <tr>
-                <td>{{ saving.id }}</td>
-                <td>{{ saving.name }}</td>
-                <td>{{ saving.amount }}</td>
-                <td>{{ saving.type }}</td>
-                <td>{{ saving.profitability }}</td>
-                <td>
-                    <a href="{{ path('app_savings_show', {'id': saving.id}) }}">show</a>
-                    <a href="{{ path('app_savings_edit', {'id': saving.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<table class="table align-middle">
+			<thead>
+				<tr>
+					<th>Libellé</th>
+					<th>Montant</th>
+					<th>Type</th>
+					<th>Rentabilité</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if app.user %}
+					{% for saving in app.user.savings %}
+						<tr>
+							<td>{{ saving.name|capitalize }}</td>
+							<td>{{ saving.amount }}</td>
+							<td>{{ saving.type }}</td>
+							<td>{{ saving.profitability }}</td>
+							<td>
+								<a class="btn btn-warning" href="{{ path('app_savings_edit', {'id': saving.id}) }}">Modifier</a>
+								{% include "savings/_delete_form.html.twig" %}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6">Aucune donnée trouvée</td>
+						</tr>
+					{% endfor %}
+				{% endif %}
+			</tbody>
+		</table>
 
-    <a href="{{ path('app_savings_new') }}">Create new</a>
+		<a class="btn btn-primary" href="{{ path('app_savings_new') }}">Ajouter un nouveau placement</a>
+	</main>
 {% endblock %}

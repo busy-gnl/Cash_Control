@@ -1,13 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}Edit UnexpectedIncomes{% endblock %}
+{% block title %}Ajouter une entrée d'argent exceptionnelle
+{% endblock %}
 
 {% block body %}
-    <h1>Edit UnexpectedIncomes</h1>
+	<main class="container mx-5">
+		<h1>Ajouter une entrée d'argent exceptionnelle</h1>
+		{{ include('unexpected_incomes/_form.html.twig') }}
 
-    {{ include('unexpected_incomes/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_unexpected_incomes_index') }}">back to list</a>
-
-    {{ include('unexpected_incomes/_delete_form.html.twig') }}
+		<a class="btn btn-dark m-2" href="{{ path('app_unexpected_incomes_index') }}">Retour à la liste</a>
+		{{ include('unexpected_incomes/_delete_form.html.twig') }}
+	</main>
 {% endblock %}

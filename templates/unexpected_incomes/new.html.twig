@@ -1,11 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}New UnexpectedIncomes{% endblock %}
+{% block title %}Ajouter une entrée d'argent exceptionnelle
+{% endblock %}
 
 {% block body %}
-    <h1>Create new UnexpectedIncomes</h1>
+	<main class="container mx-5">
+		<h1>Ajouter une entrée d'argent exceptionnelle</h1>
+		{{ include('unexpected_incomes/_form.html.twig') }}
 
-    {{ include('unexpected_incomes/_form.html.twig') }}
-
-    <a href="{{ path('app_unexpected_incomes_index') }}">back to list</a>
+		<a class="btn btn-dark m-2" href="{{ path('app_unexpected_incomes_index') }}">Retour à la liste</a>
+	</main>
 {% endblock %}

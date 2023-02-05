@@ -1,11 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}New Savings{% endblock %}
+{% block title %}Ajouter un placement
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Savings</h1>
+	<main class="container mx-5">
+		<h1>Ajouter un placement d'épargne</h1>
+		{{ include('savings/_form.html.twig') }}
 
-    {{ include('savings/_form.html.twig') }}
-
-    <a href="{{ path('app_savings_index') }}">back to list</a>
+		<a class="btn btn-dark m-2" href="{{ path('app_savings_index') }}">Retour à la liste</a>
+	</main>
 {% endblock %}

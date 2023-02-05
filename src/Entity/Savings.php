@@ -25,6 +25,9 @@ class Savings
     #[ORM\Column]
     private ?float $profitability = null;
 
+    #[ORM\ManyToOne(inversedBy: 'savings')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Savings
     public function setProfitability(float $profitability): self
     {
         $this->profitability = $profitability;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

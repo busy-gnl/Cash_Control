@@ -1,37 +1,41 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}UnexpectedIncomes index{% endblock %}
+{% block title %}Entrées d'argents inattendues
+{% endblock %}
 
 {% block body %}
-    <h1>UnexpectedIncomes index</h1>
+	<main class="container mx-5">
+		<h1>Entrées d'argents inattendues</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for unexpected_income in unexpected_incomes %}
-            <tr>
-                <td>{{ unexpected_income.id }}</td>
-                <td>{{ unexpected_income.name }}</td>
-                <td>{{ unexpected_income.amount }}</td>
-                <td>
-                    <a href="{{ path('app_unexpected_incomes_show', {'id': unexpected_income.id}) }}">show</a>
-                    <a href="{{ path('app_unexpected_incomes_edit', {'id': unexpected_income.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<table class="table align-middle">
+			<thead>
+				<tr>
+					<th>Libellé</th>
+					<th>Montant</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if app.user %}
 
-    <a href="{{ path('app_unexpected_incomes_new') }}">Create new</a>
+					{% for unexpected_income in app.user.unexpectedIncomes %}
+						<tr>
+							<td>{{ unexpected_income.name|capitalize }}</td>
+							<td>{{ unexpected_income.amount }}</td>
+							<td>
+								<a href="{{ path('app_unexpected_incomes_edit', {'id': unexpected_income.id}) }}">Modifier</a>
+								{% include "unexpected_incomes/_delete_form.html.twig" %}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="4">Aucune donnée trouvée</td>
+						</tr>
+					{% endfor %}
+				{% endif %}
+			</tbody>
+		</table>
+
+		<a class="btn btn-primary" href="{{ path('app_unexpected_incomes_new') }}">Ajouter une rentrée d'argent exceptionnelle</a>
+	</main>
 {% endblock %}

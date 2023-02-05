@@ -40,7 +40,7 @@ class MonthlyExpensesType extends AbstractType
                 'attr' => [
                     'placeholder' => 10,
                     'min' => 1,
-                    'max' => 10000,
+                    'max' => 50000,
                     'class' => 'crud-input form-control',
                 ],
                 'label_attr' => [

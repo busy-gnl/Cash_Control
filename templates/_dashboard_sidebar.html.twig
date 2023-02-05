@@ -11,6 +11,12 @@
 		{{app.user.email}}
 	</div>
 	<hr>
+	<div class="fw-bold fs-4 text-center">
+		<a href="{{ path('app_budget_tracking')}}" class="nav-link {% if app.request.pathinfo starts with '/budget-tracking' %} active {% else %} link-dark {% endif %}">
+			<i class="bi bi-bank m-3"></i>Suivre mon budget
+		</a>
+	</div>
+	<hr>
 	<ul class="nav nav-pills flex-column mb-auto fw-bold fs-5">
 		<li class="nav-item d-flex justify-content-start">
 			<a href="{{ path('app_earnings_index')}}" class="nav-link{% if app.request.pathinfo starts with '/earnings' %} active {% else %} link-dark {% endif %}" aria-current=" page">
@@ -40,16 +46,10 @@
 		<li class="nav-item d-flex justify-content-start">
 			<a href="{{ path('app_unexpected_incomes_index')}}" class="nav-link{% if app.request.pathinfo starts with '/unexpected-incomes' %} active {% else %} link-dark {% endif %}" aria-current=" page">
 				<i class="bi bi-coin m-3"></i>
-				Rentrées d'argent inattendues
+				Entrées d'argent inattendues
 			</a>
 		</li>
 	</ul>
-	<hr>
-	<div class="fw-bold fs-4 text-center">
-		<a href="{{ path('app_budget_tracking')}}" class="nav-link {% if app.request.pathinfo starts with '/budget-tracking' %} active {% else %} link-dark {% endif %}">
-			<i class="bi bi-bank m-3"></i>Suivre mon budget
-		</a>
-	</div>
 	<hr>
 	<div>
 		<a href="{{ path("app_logout") }}" class="d-flex align-items-center link-dark text-decoration-none justify-content-between fs-4" id="dropdownUser2">

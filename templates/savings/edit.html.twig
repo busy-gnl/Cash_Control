@@ -1,13 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_dashboard.html.twig' %}
 
-{% block title %}Edit Savings{% endblock %}
+{% block title %}Modifier un placement
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Savings</h1>
+	<main class="container mx-5">
+		<h1>Modifier un placement</h1>
+		{{ include('savings/_form.html.twig') }}
 
-    {{ include('savings/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_savings_index') }}">back to list</a>
-
-    {{ include('savings/_delete_form.html.twig') }}
+		<a class="btn btn-dark m-2" href="{{ path('app_savings_index') }}">Retour à la liste</a>
+		{{ include('savings/_delete_form.html.twig') }}
+	</main>
 {% endblock %}

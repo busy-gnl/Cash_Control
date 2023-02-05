@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\UnexpectedIncomes;
 use App\Form\UnexpectedIncomesType;
-use App\Repository\UnexpectedIncomesRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Repository\UnexpectedIncomesRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/unexpected-incomes')]
 class UnexpectedIncomesController extends AbstractController
 {
@@ -17,7 +19,7 @@ class UnexpectedIncomesController extends AbstractController
     public function index(UnexpectedIncomesRepository $unexpectedIncomesRepository): Response
     {
         return $this->render('unexpected_incomes/index.html.twig', [
-            'unexpected_incomes' => $unexpectedIncomesRepository->findAll(),
+            'unexpectedIncomes' => $unexpectedIncomesRepository->findAll(),
         ]);
     }
 

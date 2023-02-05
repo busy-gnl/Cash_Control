@@ -19,6 +19,9 @@ class UnexpectedIncomes
     #[ORM\Column]
     private ?int $amount = null;
 
+    #[ORM\ManyToOne(inversedBy: 'unexpectedIncomes')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class UnexpectedIncomes
     public function setAmount(int $amount): self
     {
         $this->amount = $amount;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

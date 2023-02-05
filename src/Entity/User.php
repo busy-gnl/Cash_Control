@@ -49,11 +49,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?bool $firstLogin = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Savings::class)]
+    private Collection $savings;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UnexpectedIncomes::class)]
+    private Collection $unexpectedIncomes;
+
     public function __construct()
     {
         $this->earnings = new ArrayCollection();
         $this->monthlyExpenses = new ArrayCollection();
         $this->occasionalSpendings = new ArrayCollection();
+        $this->savings = new ArrayCollection();
+        $this->unexpectedIncomes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -236,6 +244,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstLogin(?bool $firstLogin): self
     {
         $this->firstLogin = $firstLogin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Savings>
+     */
+    public function getSavings(): Collection
+    {
+        return $this->savings;
+    }
+
+    public function addSaving(Savings $saving): self
+    {
+        if (!$this->savings->contains($saving)) {
+            $this->savings->add($saving);
+            $saving->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSaving(Savings $saving): self
+    {
+        if ($this->savings->removeElement($saving)) {
+            // set the owning side to null (unless already changed)
+            if ($saving->getUser() === $this) {
+                $saving->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UnexpectedIncomes>
+     */
+    public function getUnexpectedIncomes(): Collection
+    {
+        return $this->unexpectedIncomes;
+    }
+
+    public function addUnexpectedIncome(UnexpectedIncomes $unexpectedIncome): self
+    {
+        if (!$this->unexpectedIncomes->contains($unexpectedIncome)) {
+            $this->unexpectedIncomes->add($unexpectedIncome);
+            $unexpectedIncome->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUnexpectedIncome(UnexpectedIncomes $unexpectedIncome): self
+    {
+        if ($this->unexpectedIncomes->removeElement($unexpectedIncome)) {
+            // set the owning side to null (unless already changed)
+            if ($unexpectedIncome->getUser() === $this) {
+                $unexpectedIncome->setUser(null);
+            }
+        }
 
         return $this;
     }

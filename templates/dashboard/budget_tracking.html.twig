@@ -10,7 +10,12 @@
 	{% set totalMonthlyExpenses = totalMonthlyExpenses + expense.amount %}
 {% endfor %}
 
-{% set availableBudget = totalEarnings - totalMonthlyExpenses %}
+{% set totalOccasionalSpendings = 0 %}
+{% for spending in app.user.occasionalSpendings %}
+	{% set totalOccasionalSpendings = totalOccasionalSpendings + spending.amount %}
+{% endfor %}
+
+{% set availableBudget = totalEarnings - totalMonthlyExpenses - totalOccasionalSpendings %}
 
 {% set advicedSavings = (totalEarnings / 100) * 10 %}
 
@@ -52,6 +57,29 @@
 				</spanclass="calculated-amount">
 				en moyenne par jour.
 			</h4>
+		</section>
+
+		<section class="section-onboarding">
+			<h2 id="spendings">Ajoutez vos dépenses journalières</h2>
+			<h3>Votre budget restant se mettra à jour automatiquement</h3>
+			{{ form_start(occasionalSpendingsForm) }}
+			{{ form_widget(occasionalSpendingsForm) }}
+			<button href="#spendings" class="btn btn-danger crud-button ">{{ button_label|default('Ajouter une dépense') }}</button>
+			{{ form_end(occasionalSpendingsForm) }}
+		</section>
+
+		<section class="section-onboarding">
+
+			<h3>Vous connaissez maintenant votre budget par mois, par semaine et par jour</h3>
+
+			<h4>Veillez à ne pas le dépasser, pensez à l'avenir, il est important de mettre de l'argent de côté chaque mois.
+				<br>
+				Vous vous remercierez plus tard.
+			</h4>
+
+			<a href="{{ path('app_savings_index')}}" class="btn btn-info">
+				Obtenir des conseils sur l'épargne
+			</a>
 		</section>
 	</main>
 {% endblock %}
