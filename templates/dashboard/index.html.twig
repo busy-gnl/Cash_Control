@@ -1,19 +1,5 @@
 {% extends 'base_dashboard.html.twig' %}
 
-{% set totalEarnings = 0 %}
-{% for earning in app.user.earnings %}
-	{% set totalEarnings = totalEarnings + earning.amount %}
-{% endfor %}
-
-{% set totalMonthlyExpenses = 0 %}
-{% for expense in app.user.monthlyExpenses %}
-	{% set totalMonthlyExpenses = totalMonthlyExpenses + expense.amount %}
-{% endfor %}
-
-{% set monthlyBudget = totalEarnings - totalMonthlyExpenses %}
-
-{% set advicedSavings = (totalEarnings / 100) * 10 %}
-
 {% block title %}Dashboard
 {% endblock %}
 

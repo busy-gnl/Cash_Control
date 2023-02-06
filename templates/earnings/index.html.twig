@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container mx-5">
+	<section class="container mx-5">
 		<h1>Revenus mensuels</h1>
 
 		<table class="table align-middle">
@@ -21,10 +21,13 @@
 					{% for earning in app.user.earnings %}
 						<tr>
 							<td>{{ earning.name|capitalize }}</td>
-							<td>{{ earning.amount }}</td>
+							<td>{{ earning.amount }}
+								€</td>
 							<td>{{ earning.type}}</td>
 							<td>
-								<a class="btn btn-warning" href="{{ path('app_earnings_edit', {'id': earning.id}) }}">Modifier</a>
+								<a class="btn" href="{{ path('app_earnings_edit', {'id': earning.id}) }}">
+									<i class="bi bi-pencil-square"></i>
+								</a>
 								{% include "earnings/_delete_form.html.twig" %}
 							</td>
 						</tr>
@@ -38,5 +41,5 @@
 		</table>
 
 		<a class="btn btn-primary" href="{{ path('app_earnings_new') }}">Ajouter un nouveau revenu mensuel</a>
-	</main>
+	</section>
 {% endblock %}

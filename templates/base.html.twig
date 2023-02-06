@@ -22,6 +22,38 @@
 
 	</head>
 	<body>
+		{% if app.user %}
+
+			{% set totalEarnings = 0 %}
+			{% for earning in app.user.earnings %}
+				{% set totalEarnings = totalEarnings + earning.amount %}
+			{% endfor %}
+
+			{% set totalMonthlyExpenses = 0 %}
+			{% for expense in app.user.monthlyExpenses %}
+				{% set totalMonthlyExpenses = totalMonthlyExpenses + expense.amount %}
+			{% endfor %}
+
+			{% set totalOccasionalSpendings = 0 %}
+			{% for spending in app.user.occasionalSpendings %}
+				{% set totalOccasionalSpendings = totalOccasionalSpendings + spending.amount %}
+			{% endfor %}
+
+			{% set availableBudget = totalEarnings - totalMonthlyExpenses - totalOccasionalSpendings %}
+
+			{% set advicedSavings = (totalEarnings / 100) * 10 %}
+
+			{% set weeklyBudget = availableBudget / 4.5 %}
+
+			{% set daysInMonth = "now"|date("t") %}
+
+			{% set dailyBudget = availableBudget / daysInMonth %}
+
+			{% set monthlyBudget = totalEarnings - totalMonthlyExpenses %}
+
+			{% set advicedSavings = (totalEarnings / 100) * 10 %}
+
+		{% endif %}
 		<header>
 			{# {% include "_navbar.html.twig" %} #}
 		</header>

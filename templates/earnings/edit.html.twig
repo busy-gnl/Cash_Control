@@ -4,11 +4,11 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container mx-5">
+	<section class="container mx-5">
 		<h1>Modifier un revenu mensuel régulier</h1>
 		{{ include('earnings/_form.html.twig') }}
 
 		<a class="btn btn-dark m-2" href="{{ path('app_earnings_index') }}">Retour à la liste</a>
 		{{ include('earnings/_delete_form.html.twig') }}
-	</main>
+	</section>
 {% endblock %}

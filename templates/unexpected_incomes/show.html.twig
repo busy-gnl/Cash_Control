@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container mx-5">
+	<section class="container mx-5">
 		<h1>UnexpectedIncomes</h1>
 
 		<table class="table">
@@ -29,5 +29,5 @@
 		<a href="{{ path('app_unexpected_incomes_edit', {'id': unexpected_income.id}) }}">edit</a>
 
 		{{ include('unexpected_incomes/_delete_form.html.twig') }}
-	</main>
+	</section>
 {% endblock %}

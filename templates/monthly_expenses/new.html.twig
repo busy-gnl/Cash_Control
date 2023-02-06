@@ -4,10 +4,10 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container mx-5">
+	<section class="container mx-5">
 		<h1>Ajouter un frais mensuel récurrent</h1>
 		{{ include('monthly_expenses/_form.html.twig') }}
 
 		<a class="btn btn-dark m-2" href="{{ path('app_monthly_expenses_index') }}">Retour à la liste</a>
-	</main>
+	</section>
 {% endblock %}

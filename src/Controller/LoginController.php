@@ -40,7 +40,7 @@ class LoginController extends AbstractController
                 $user->setFirstLogin(false);
                 $entityManager->persist($user);
                 $entityManager->flush();
-                return $this->redirectToRoute('app_onboarding', [], Response::HTTP_SEE_OTHER);
+                return $this->redirectToRoute('app_onboarding_earnings', [], Response::HTTP_SEE_OTHER);
             }
 
             return $this->redirectToRoute('app_dashboard', [], Response::HTTP_SEE_OTHER);

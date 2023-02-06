@@ -18,7 +18,8 @@ html {
 }
 
 body {
-    background: linear-gradient(to bottom, #ffffff, #75c7dc);
+    // background: linear-gradient(#ffffff, #75c7dc);
+    background: whitesmoke;
     text-align: center;
     font-family: 'Oswald';
     height: 100%;
@@ -43,6 +44,7 @@ h3, h4, h5 {
     font-size: large;
     font-weight: bold;
 }
+
 
 //Navbar ------------------
     .sidebar {
@@ -100,7 +102,7 @@ h3, h4, h5 {
 
 .crud-button {
     font-weight: bold;
-    margin: 1rem;
+    margin: 1.2rem;
     display: block;
     margin: auto;
 }
@@ -115,8 +117,13 @@ margin: 1rem;
 
 //Onboarding ------------
 
+.table-onboarding{
+    padding: 1rem;
+    border: 1px solid black;
+}
+
 .section-onboarding {
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 }
 
 //End Onboaring --------

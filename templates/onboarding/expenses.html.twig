@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Onboarding
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+
+		<h1>Bienvenue
+			{{app.user.username}}</h1>
+
+		<h2 id="spendings">Ajoutez vos dépenses mensuelles régulières</h2>
+
+		<div class="d-flex justify-content-center">
+			<table class="table-onboarding">
+				<thead class="table-onboarding fw-bold">
+					<tr>
+						<th class="table-onboarding fs-5" colspan="3">Vos revenus mensuels</th>
+						{# <th></th> #}
+					</tr>
+					<tr>
+						<th class="table-onboarding">Type</th>
+						<th class="table-onboarding">Libellé</th>
+						<th class="table-onboarding">Montant</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for expense in app.user.monthlyExpenses %}
+						<tr>
+							<td class="table-onboarding">{{expense.type}}
+							</td>
+							<td class="table-onboarding">{{expense.name|capitalize}}
+							</td>
+							<td class="table-onboarding">{{expense.amount}}
+								€</td>
+							{# <td class="table-onboarding">
+																													{% include "earnings/_delete_form.html.twig" %}
+																												</td> #}
+						{% endfor %}
+					</tr>
+					<tr>
+						<td class="table-onboarding fs-5 text-center" colspan="3">Total</td>
+					</tr>
+					<tr>
+						<td class="table-onboarding fs-5 text-center" colspan="3">{{totalEarnings}}
+							€ par mois</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<section class="section-onboarding">
+			{{ form_start(expensesform) }}
+			{{ form_widget(expensesform) }}
+			<button href="#spendings" class="btn btn-danger crud-button ">{{ button_label|default('Ajouter un frais mensuel') }}</button>
+			{{ form_end(expensesform) }}
+		</section>
+
+		<section class="section-onboarding">
+			<h4>
+				Astuce : Vous pouvez ajouter plusieurs dépenses mensuelles après les autres.
+				<br>
+				Vous pourrez toujours en ajouter, modifier et supprimer depuis votre Tableau de bord.
+			</h4>
+		</section>
+
+		<section class="section-onboarding">
+			<h4>
+				Quand vous aurez terminé de remplir ce questionnaire, cliquez sur le bouton "Terminer" ci-dessous pour accéder à votre Tableau de bord.
+			</h4>
+			<a href="{{ path('app_dashboard')}}" class="btn btn-dark">Terminer</a>
+		</section>
+	</main>
+
+{% endblock %}

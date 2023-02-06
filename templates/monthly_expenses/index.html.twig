@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container mx-5">
+	<section class="container mx-5">
 		<h1>Frais de la vie quotiennes</h1>
 
 		<table class="table align-middle">
@@ -21,10 +21,13 @@
 					{% for monthly_expense in app.user.monthlyExpenses %}
 						<tr>
 							<td>{{ monthly_expense.name|capitalize }}</td>
-							<td>{{ monthly_expense.amount }}</td>
+							<td>{{ monthly_expense.amount }}
+								€</td>
 							<td>{{ monthly_expense.type }}</td>
 							<td>
-								<a class="btn btn-warning" href="{{ path('app_monthly_expenses_edit', {'id': monthly_expense.id}) }}">Modifier</a>
+								<a class="btn" href="{{ path('app_monthly_expenses_edit', {'id': monthly_expense.id}) }}">
+									<i class="bi bi-pencil-square"></i>
+								</a>
 								{% include "monthly_expenses/_delete_form.html.twig" %}
 							</td>
 						</tr>
@@ -38,5 +41,5 @@
 		</table>
 
 		<a class="btn btn-primary" href="{{ path('app_monthly_expenses_new') }}">Ajouter un nouveau frais mensuel</a>
-	</main>
+	</section>
 {% endblock %}

@@ -17,11 +17,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[IsGranted('ROLE_USER')]
 class OnboardingController extends AbstractController
 {
-    #[Route('/onboarding', name: 'app_onboarding', methods: ['GET', 'POST'])]
-    public function onboarding(
+    #[Route('/onboarding-earnings', name: 'app_onboarding_earnings', methods: ['GET', 'POST'])]
+    public function onboardingEarnings(
         Request $request,
         EarningsRepository $earningsRepository,
-        MonthlyExpensesRepository $monthlyExpensesRepository
     ): Response {
         /** @var \App\Entity\User */
         $user = $this->getUser();
@@ -29,22 +28,34 @@ class OnboardingController extends AbstractController
         $earningsform = $this->createForm(EarningsType::class, $earning);
         $earningsform->handleRequest($request);
 
-        $monthlyExpense = new MonthlyExpenses();
-        $expensesform = $this->createForm(MonthlyExpensesType::class, $monthlyExpense);
-        $expensesform->handleRequest($request);
-
         if ($earningsform->isSubmitted() && $earningsform->isValid()) {
             $earning->setUser($user);
             $earningsRepository->save($earning, true);
         }
+
+        return $this->render('onboarding/earnings.html.twig', [
+            'earningsform' => $earningsform->createView(),
+        ]);
+    }
+
+    #[Route('/onboarding-expenses', name: 'app_onboarding_expenses', methods: ['GET', 'POST'])]
+    public function onboardingExpenses(
+        Request $request,
+        MonthlyExpensesRepository $monthlyExpensesRepository
+    ): Response {
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+
+        $monthlyExpense = new MonthlyExpenses();
+        $expensesform = $this->createForm(MonthlyExpensesType::class, $monthlyExpense);
+        $expensesform->handleRequest($request);
 
         if ($expensesform->isSubmitted() && $expensesform->isValid()) {
             $monthlyExpense->setUser($user);
             $monthlyExpensesRepository->save($monthlyExpense, true);
         }
 
-        return $this->render('onboarding/index.html.twig', [
-            'earningsform' => $earningsform->createView(),
+        return $this->render('onboarding/expenses.html.twig', [
             'expensesform' => $expensesform->createView(),
         ]);
     }

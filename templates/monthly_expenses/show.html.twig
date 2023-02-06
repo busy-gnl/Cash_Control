@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container mx-5">
+	<section class="container mx-5">
 		<h1>MonthlyExpenses</h1>
 
 		<table class="table">
@@ -14,18 +14,20 @@
 					<td>{{ monthly_expense.id }}</td>
 				</tr>
 				<tr>
-					<th>Name</th>
+					<th>Libellé</th>
 					<td>{{ monthly_expense.name }}</td>
 				</tr>
-				<main class="container"></th>
-				<td>{{ monthly_expense.type }}</td>
+				<tr>
+					<th>Montant</th>
+					<td>{{ monthly_expense.type }}</td>
+				</tr>
 			</tbody>
-		</tr>
-	</tbody>
-</table>
+		</table>
 
-<a href="{{ path('app_monthly_expenses_index') }}">back to list</a>
+		<a href="{{ path('app_monthly_expenses_index') }}">back to list</a>
 
-<a href="{{ path('app_monthly_expenses_edit', {'id': monthly_expense.id}) }}">edit</a>
+		<a href="{{ path('app_monthly_expenses_edit', {'id': monthly_expense.id}) }}">edit</a>
 
-{{ include('monthly_expenses/_delete_form.html.twig') }}</main>{% endblock %}
+		{{ include('monthly_expenses/_delete_form.html.twig') }}
+	</section>
+{% endblock %}
